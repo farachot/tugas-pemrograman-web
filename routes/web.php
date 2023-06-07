@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('homepage');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('homepage');
+Route::get('contact', [\App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::get('detail', [\App\Http\Controllers\HomeController::class, 'detail'])->name('detail');
 
 Route::get('admin/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard.index');
