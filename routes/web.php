@@ -17,6 +17,9 @@ Route::get('contact', [\App\Http\Controllers\HomeController::class, 'contact'])-
 Route::get('detail', [\App\Http\Controllers\HomeController::class, 'detail'])->name('detail');
 
 Route::get('admin/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard.index')->middleware('is_admin');
+Route::resource('admin/cars', \App\Http\Controllers\Admin\CarController::class);
+
+
 
 Auth::routes();
 
