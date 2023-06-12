@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use App\Models\Car;
-use Illuminate\Http\Request;
+use Illuminate\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\Admin\CarStoreRequest;
 
 class CarController extends Controller
 {
@@ -29,9 +33,18 @@ class CarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CarStoreRequest $request)
     {
-        //
+        if($request->validated()) {
+            $gambar = $request->file('gambar')->store('assets/car', 'public');
+            $slug = Str::slug($request->nama_mobil, '-');
+            Car::create($request->except('gambar') + ['gambar' => $gambar, 'slug' => $slug]);
+        }
+
+        return redirect()->route('cars.index')->with([
+            'message' => 'data sukses dibuat',
+            'alert-type' => 'success'
+        ]);
     }
 
     /**
@@ -66,3 +79,33 @@ class CarController extends Controller
         //
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

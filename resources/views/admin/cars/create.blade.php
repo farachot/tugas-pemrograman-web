@@ -6,7 +6,8 @@
         Form Tambah Data
     </div>
     <div class="card-body">
-        <form action="">
+        <form action="{{ route('cars.store') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="form-group">
                 <label for="nama_mobil">Nama Mobil</label>
                 <input type="text" name="nama_mobil" class="form-control" value=" {{ old('nama_mobil') }}">

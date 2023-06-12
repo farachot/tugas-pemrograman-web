@@ -27,10 +27,10 @@
                             <td> 
                                 <img src="{{ Storage::url($car->gambar) }}" width="200">
                             </td>
-                            <td>{{ $car->harga_mobil }}</td>
+                            <td>{{ $car->harga_sewa }}</td>
                             <td>{{ $car->status }}</td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-warning"></a>
+                                <a href="#" class="btn btn-sm btn-warning">edit</a>
                             </td>
                         </tr>
                         @empty
