@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label for="deskripsi">Deskripsi</label>
-                <textarea name="deskripsi" class="form-control" id="deskripsi" cols="30" rows="5"></textarea>
+                <textarea name="deskripsi" class="form-control" id="deskripsi" cols="30" rows="5">{{ old('deskripsi') }}</textarea>
             </div>
             <div class="form-group">
                 <label for="p3k">p3k</label>

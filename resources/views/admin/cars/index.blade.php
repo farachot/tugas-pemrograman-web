@@ -30,7 +30,7 @@
                             <td>{{ $car->harga_sewa }}</td>
                             <td>{{ $car->status }}</td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-warning">edit</a>
+                                <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-sm btn-warning">edit</a>
                             </td>
                         </tr>
                         @empty

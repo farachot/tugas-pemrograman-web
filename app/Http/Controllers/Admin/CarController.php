@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\CarStoreRequest;
+use App\Http\Requests\Admin\CarUpdateRequest;
 
 class CarController extends Controller
 {
@@ -58,17 +59,27 @@ class CarController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Car $car)
     {
-        //
+        return view('admin.cars.edit', compact('car'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CarUpdateRequest $request,Car $car)
     {
-        //
+        if($request->validated()){
+            $slug = Str::slug($request->nama_mobil, '-');
+            $car->update($request->validated() + ['slug' => $slug]);
+
+            return redirect()->route('cars.index')->with([
+                'message' => 'data berhasil diedit',
+                'alert-type' => 'info'
+            ]);
+        };
+
+
     }
 
     /**
