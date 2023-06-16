@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h3>Daftar Mobil</h3>
-        <a href="{{ route('cars.create') }}" class="btn btn-primary">Tambah Data</a>
+        <a href="{{ route('admin.cars.create') }}" class="btn btn-primary">Tambah Data</a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -30,7 +30,12 @@
                             <td>{{ $car->harga_sewa }}</td>
                             <td>{{ $car->status }}</td>
                             <td>
-                                <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-sm btn-warning">edit</a>
+                                <a href="{{ route('admin.cars.edit', $car->id) }}" class="btn btn-sm btn-warning">edit</a>
+                                <form onclick="return confirm('anda yakin ingin mengahpus data');" class="d-inline" action="{{ route('admin.cars.destroy', $car->id) }}" method="post" >
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
                             </td>
                         </tr>
                         @empty

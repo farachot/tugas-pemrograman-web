@@ -6,7 +6,7 @@
         Form Tambah Data
     </div>
     <div class="card-body">
-        <form action="{{ route('cars.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin.cars.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="nama_mobil">Nama Mobil</label>
@@ -14,7 +14,7 @@
             </div>
             <div class="form-group">
                 <label for="harga_sewa">Harga Sewa</label>
-                <input type="number" name="harga_sewa" class="form-control" value=" {{ old('harga_sewa') }}">
+                <input type="number" name="harga_sewa" class="form-control" value=" {{ old('harga_sewa'); }}">
             </div>
             <div class="form-group">
                 <label for="bahan_bakar">Bahan Bakar</label>
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label for="jumlah_kursi">Jumlah Kursi</label>
-                <input type="number" name="jumlah_kursi" class="form-control" value=" {{ old('jumlah_kursi') }}">
+                <input type="number" name="jumlah_kursi" class="form-control" value=" {{ old('jumlah_kursi'); }}">
             </div>
             <div class="form-group">
                 <label for="transmisi">Transmisi</label>

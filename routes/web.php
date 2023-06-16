@@ -16,10 +16,11 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('h
 Route::get('contact', [\App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 Route::get('detail', [\App\Http\Controllers\HomeController::class, 'detail'])->name('detail');
 
-Route::get('admin/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard.index')->middleware('is_admin');
-Route::resource('admin/cars', \App\Http\Controllers\Admin\CarController::class);
-Route::put('admin/cars/update-image/{id}', [\App\Http\Controllers\Admin\CarController::class, 'updateImage'])->name('admin.cars.updateImage');
-
+Route::group(['middleware' => 'is_admin', 'prefix'=> 'admin', 'as'=> 'admin.' ], function() {
+    Route::get('dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index');
+    Route::resource('cars', \App\Http\Controllers\Admin\CarController::class);
+    Route::put('cars/update-image/{id}', [\App\Http\Controllers\Admin\CarController::class, 'updateImage'])->name('cars.updateImage');
+});
 
 Auth::routes();
 
