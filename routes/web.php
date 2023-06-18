@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('homepage');
-Route::get('contact', [\App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 Route::get('detail', [\App\Http\Controllers\HomeController::class, 'detail'])->name('detail');
+Route::get('contact', [\App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::post('contact', [\App\Http\Controllers\HomeController::class, 'contactStore'])->name('contact.store');
 
 Route::group(['middleware' => 'is_admin', 'prefix'=> 'admin', 'as'=> 'admin.' ], function() {
     Route::get('dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index');

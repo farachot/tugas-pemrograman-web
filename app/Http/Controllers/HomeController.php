@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,6 +15,24 @@ class HomeController extends Controller
     {
        return view('frontend.contact');
     }
+
+    public function contactStore(Request $request)
+    {
+      $data = $request->validate([
+         'nama' => 'required',
+         'email' => 'required',
+         'subject' => 'required',
+         'pesan' => 'required'
+      ]);
+
+      Message::create($data);
+
+      return redirect()->back()->with([
+         'message' => 'pesan berhasil dikirim',
+         'alert-type' => 'info'
+     ]);
+    }
+
     public function detail()
     {
        return view('frontend.detail');
