@@ -27,5 +27,11 @@
         <span>Daftar Mobil</span></a>
 </li>
 
+<li class="nav-item active">
+    <a class="nav-link" href="{{ route('admin.messages.index') }}">
+        <i class="fas fa-envelope fa-fw"></i>
+        <span>Daftar Pesan</span></a>
+</li>
+
 
 </ul>

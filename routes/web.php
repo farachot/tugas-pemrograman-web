@@ -21,6 +21,9 @@ Route::group(['middleware' => 'is_admin', 'prefix'=> 'admin', 'as'=> 'admin.' ],
     Route::get('dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index');
     Route::resource('cars', \App\Http\Controllers\Admin\CarController::class);
     Route::put('cars/update-image/{id}', [\App\Http\Controllers\Admin\CarController::class, 'updateImage'])->name('cars.updateImage');
+
+    Route::get('messages', [\App\Http\Controllers\Admin\MessageController::class, 'index'])->name('messages.index');
+    Route::delete('messages/{message}', [\App\Http\Controllers\Admin\MessageController::class, 'destroy'])->name('messages.destroy');
 });
 
 Auth::routes();
