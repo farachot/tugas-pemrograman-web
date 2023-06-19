@@ -33,5 +33,14 @@
         <span>Daftar Pesan</span></a>
 </li>
 
+<li class="nav-item active">
+    <a class="nav-link" onclick="document.getElementById('logout-form').submit()" href="#">
+        <i class="fas fa-logout fa-fw"></i>
+        <span>Logout</span></a>
+        <form id="logout-form" action="{{route('logout')}}" method="post">
+            @csrf
+        </form>
+</li>
+
 
 </ul>

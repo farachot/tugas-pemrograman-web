@@ -68,7 +68,7 @@
               <!-- Product actions-->
               <div class="card-footer border-top-0 bg-transparent">
                 <div class="text-center">
-                  <a class="btn btn-primary mt-auto" href="#">Sewa</a>
+                  <a class="btn btn-primary mt-auto" href="https://api.whatsapp.com/send?phone=6282111417101&text=saya%20ingin%20menyewa%20mobil%20{{ $car->nama_mobil }}%20ini">Sewa</a>
                   <a
                     class="btn btn-info mt-auto text-white"
                     href="{{ route('detail', $car->slug) }}"
