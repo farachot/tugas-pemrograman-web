@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use App\Models\Message;
 use Illuminate\Http\Request;
 
@@ -9,8 +10,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-       return view('frontend.homepage');
+         $cars = Car::latest()->get();
+      
+         return view('frontend.homepage', compact('cars'));
     }
+
     public function contact()
     {
        return view('frontend.contact');
@@ -33,8 +37,8 @@ class HomeController extends Controller
      ]);
     }
 
-    public function detail()
+    public function detail(Car $car)
     {
-       return view('frontend.detail');
+       return view('frontend.detail', compact('car'));
     } 
 }

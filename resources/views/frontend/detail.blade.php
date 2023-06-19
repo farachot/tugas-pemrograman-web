@@ -17,8 +17,8 @@
               <!-- Product image-->
               <img
                 class="card-img-top"
-                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                alt="..."
+                src="{{ Storage::url($car->gambar) }}"
+                alt="{{ $car->nama_mobil }}"
               />
               <!-- Product details-->
               <div class="card-body card-body-custom pt-4">
@@ -26,28 +26,45 @@
                   <!-- Product name-->
                   <h3 class="fw-bolder text-primary">Deskripsi</h3>
                   <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Ipsa dolor corrupti porro, sit ex nemo itaque, est
-                    voluptatum illum dignissimos facilis alias facere rem
-                    consequatur?
+                  {{ $car->deskripsi }}
                   </p>
                   <div class="mobil-info-list border-top pt-4">
                     <ul class="list-unstyled">
                       <li>
+                        @if($car->p3k)
                         <i class="ri-checkbox-circle-line"></i>
                         <span>P3K</span>
+                        @else
+                        <i class="ri-close-circle-line text-secondary"></i>
+                        <span>P3K</span>
+                        @endif
                       </li>
                       <li>
+                      @if($car->charger)
+                        <i class="ri-checkbox-circle-line"></i>
+                        <span>CHARGER</span>
+                        @else
                         <i class="ri-close-circle-line text-secondary"></i>
                         <span>CHARGER</span>
+                        @endif
                       </li>
                       <li>
+                      @if($car->audio)
+                        <i class="ri-checkbox-circle-line"></i>
+                        <span>AUDIO</span>
+                        @else
                         <i class="ri-close-circle-line text-secondary"></i>
                         <span>AUDIO</span>
+                        @endif
                       </li>
                       <li>
+                      @if($car->ac)
                         <i class="ri-checkbox-circle-line"></i>
                         <span>AC</span>
+                        @else
+                        <i class="ri-close-circle-line text-secondary"></i>
+                        <span>AC</span>
+                        @endif                     
                       </li>
                     </ul>
                   </div>
@@ -64,10 +81,10 @@
                   <div
                     class="d-flex justify-content-between align-items-center"
                   >
-                    <h5 class="fw-bolder">Special Item</h5>
+                    <h5 class="fw-bolder">{{ $car->nama_mobil }}</h5>
                     <div class="rent-price mb-3">
                       <span style="font-size: 1rem" class="text-primary"
-                        >Rp.200.000/</span
+                        >{{ number_format($car->harga_sewa) }}</span
                       >day
                     </div>
                   </div>
@@ -76,19 +93,19 @@
                       class="border-bottom p-2 d-flex justify-content-between"
                     >
                       <span>Bahan Bakar</span>
-                      <span style="font-weight: 600">Bensin</span>
+                      <span style="font-weight: 600">{{ $car->bahan_bakar }}</span>
                     </li>
                     <li
                       class="border-bottom p-2 d-flex justify-content-between"
                     >
                       <span>Jumlah Kursi</span>
-                      <span style="font-weight: 600">5</span>
+                      <span style="font-weight: 600">{{ $car->jumlah_kursi }}</span>
                     </li>
                     <li
                       class="border-bottom p-2 d-flex justify-content-between"
                     >
                       <span>Transmisi</span>
-                      <span style="font-weight: 600">Manual</span>
+                      <span style="font-weight: 600">{{ $car->transmisi }}</span>
                     </li>
                   </ul>
                 </div>
@@ -98,7 +115,7 @@
                 <div class="text-center">
                   <a
                     class="btn d-flex align-items-center justify-content-center btn-primary mt-auto"
-                    href="#"
+                    href="https://api.whatsapp.com/send?phone=6282111417101&text=saya%20ingin%20menyewa%20mobil%20{{ $car->nama_mobil }}%20ini"
                     style="column-gap: 0.4rem"
                     >Sewa Mobil <i class="ri-whatsapp-line"></i
                   ></a>
